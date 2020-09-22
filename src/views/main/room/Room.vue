@@ -14,7 +14,7 @@
 </ul>
             </div>
             <div class="col-md-8">
-                <div class="container-msg">
+                <div ref="containerMsg" class="container-msg">
                      <ul class="list-group list-group-flush">
                     <li class="list-group-item" v-for="message in messages" :key="message.id">{{message.messageBody}}</li>
                 </ul>
@@ -58,6 +58,9 @@ export default {
         dom.value = ''
         this.messages.push(msg)
         this.handleSendMsgFriend(msg)
+        const scrollMsg = this.$refs.containerMsg
+        scrollMsg.scrollTop = scrollMsg.scrollHeight
+        // containerMsg.scrollHeight
       })
     }
   },
